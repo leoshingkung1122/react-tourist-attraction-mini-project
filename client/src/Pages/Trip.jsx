@@ -1,7 +1,11 @@
 import { useParams } from "react-router-dom";   
+import { useEffect } from "react";
+import axios from "axios";
+import { useState } from "react";
 
 function Trip() {
     const { id } = useParams();
+    const [data, setData] = useState();
 
     const fetchData = async () => {
         const response = await axios.get(`http://localhost:4001/trips/${id}`);
@@ -14,7 +18,7 @@ function Trip() {
 
     return (
         <div>
-            <h1>Trip</h1>
+            <h1>HelloWorld!</h1>
         </div>
     )
 }
