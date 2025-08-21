@@ -36,10 +36,10 @@ function Filter({search, setSearch}) {
         <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
             {/* Filter Header */}
             <div className="text-center mb-4">
-                <h3 className="text-base sm:text-lg font-semibold text-gray-700 mb-1">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-700 mb-3">
                     เลือกหมวดหมู่ที่สนใจ
                 </h3>
-                <p className="text-xs sm:text-sm text-gray-500">
+                <p className="text-xs sm:text-sm text-gray-500 mb-5">
                     คลิกเพื่อเลือกหมวดหมู่ที่ต้องการ
                 </p>
             </div>
@@ -52,7 +52,7 @@ function Filter({search, setSearch}) {
                         <button
                             key={category.id}
                             onClick={() => handleCategoryClick(category)}
-                            className={`group relative flex flex-col items-center justify-center p-2 sm:p-3 rounded-xl border transition-all duration-300 transform hover:scale-105 ${
+                            className={`group relative flex flex-col items-center justify-center p-2 sm:p-3 rounded-xl border transition-all duration-300 transform hover:scale-105 cursor-pointer ${
                                 isSelected
                                     ? 'border-blue-400 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-md shadow-blue-200/50'
                                     : 'border-gray-200 bg-white/70 backdrop-blur-sm hover:border-gray-300 hover:bg-white/90 hover:shadow-sm'

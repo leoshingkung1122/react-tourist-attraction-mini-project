@@ -18,7 +18,7 @@ function Header({search, setSearch}) {
                         <input
                             type="text"
                             placeholder="หาที่เที่ยวแล้วไปกัน ..."
-                            className="w-full bg-white/50 px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg border-2 border-blue-200 rounded-full focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                            className="w-full bg-white/50 px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg border-2 border-blue-200 rounded-full focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-400 transition-all duration-300 transform hover:scale-105 shadow-lg"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                         />
