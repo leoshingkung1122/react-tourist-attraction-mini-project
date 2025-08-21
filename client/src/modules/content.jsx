@@ -1,15 +1,10 @@
-import { useNavigate , Link } from "react-router-dom";
-import { useState } from "react";
 
 function Content({data}) {
 
-    const [textToCopy, setTextToCopy] = useState('http://localhost:5174/trips/');
 
-    const navigate = useNavigate();
-
-    const handleCopy = async (eid) => {
+    const handleCopy = async (url) => {
         try {
-          await navigator.clipboard.writeText(textToCopy + eid);
+          await navigator.clipboard.writeText(url);
           alert('ลิงก์ถูกคัดลอกเรียบร้อยแล้ว!');
         } catch (err) {
           console.error('ไม่สามารถคัดลอกข้อความได้:', err);
@@ -38,22 +33,22 @@ function Content({data}) {
                         {/* Content */}
                         <div className="w-full md:w-3/5 p-3 sm:p-4 lg:p-5 flex flex-col justify-between">
                             <div>
-                                <Link to={`/trips/${item.eid}`}>
-                                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 leading-tight hover:text-blue-600 transition-colors duration-200 cursor-pointer">
+                                <a href={item.url} target="_blank" rel="noopener noreferrer"
+                                className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 leading-tight hover:text-blue-600 transition-colors duration-200 cursor-pointer">
                                     {item.title}
-                                </h2>
-                                </Link>
+                                </a>
+                                
                                 <p className="text-gray-600 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base line-clamp-2 sm:line-clamp-2">
                                     {item.description.length > 100 ? item.description.slice(0, 100) + "..." : item.description}
                                 </p>
                                 
-                                <button className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors duration-200 mb-3 sm:mb-4 group underline text-sm sm:text-base cursor-pointer"
-                                onClick={() => navigate(`/trips/${item.eid}`)}>
+                                <a href={item.url} target="_blank" rel="noopener noreferrer"
+                                className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors duration-200 mb-3 sm:mb-4 group underline text-sm sm:text-base cursor-pointer">
                                     อ่านต่อ
                                     <svg className="w-3 h-3 sm:w-4 sm:h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                     </svg>
-                                </button>
+                                </a>
                                 
                                 <div className=" mb-2 flex flex-row items-center">
                                     
@@ -90,7 +85,7 @@ function Content({data}) {
                         <div className="absolute md:bottom-4 md:top-auto sm:bottom-auto sm:top-4 right-2 top-4 sm:right-3 md:right-2">
                             <button 
                                 className="bg-blue-500 text-white p-2 sm:p-2 md:p-2 lg:p-3 rounded-full shadow-lg hover:bg-blue-600 transition-all duration-200 transform hover:scale-110 hover:rotate-12 cursor-pointer"
-                                onClick={() => handleCopy(item.eid)}
+                                onClick={() => handleCopy(item.url)}
                                 title="คัดลอกลิงก์"
                             >
                                 <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
