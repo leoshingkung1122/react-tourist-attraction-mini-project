@@ -29,7 +29,7 @@ function Header({search, setSearch}) {
                         </button>
                     </div>
                 </div>
-                <Filter/>
+                <Filter search={search} setSearch={setSearch}/>
             </div>
 
             {/* Divider Line */}

@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
-function Filter() {
+function Filter({search, setSearch}) {
     const [selectedCategories, setSelectedCategories] = useState([]);
 
     // หมวดหมู่ตามที่คุณต้องการ
@@ -25,8 +25,12 @@ function Filter() {
         } else {
             // ถ้าเลือกหมวดหมู่ใหม่ ให้เพิ่มเข้าไป
             setSelectedCategories(prev => [...prev, category]);
-        }
+        } 
     };
+
+    useEffect(() => {
+        setSearch(selectedCategories.map(cat => cat.name).join(" "));
+    }, [selectedCategories]);
 
     return (
         <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
