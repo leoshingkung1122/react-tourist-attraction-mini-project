@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import Header from "../modules/header";
 import Content from "../modules/content";
 
-
 function Home() {
 
     const [search, setSearch] = useState("");

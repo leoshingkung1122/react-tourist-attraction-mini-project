@@ -1,3 +1,5 @@
+import Filter from "./filter";
+
 function Header({search, setSearch}) {
     return (
         <>
@@ -27,6 +29,7 @@ function Header({search, setSearch}) {
                         </button>
                     </div>
                 </div>
+                <Filter/>
             </div>
 
             {/* Divider Line */}
