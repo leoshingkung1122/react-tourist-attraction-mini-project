@@ -16,7 +16,7 @@ function Header() {
                         <input
                             type="text"
                             placeholder="หาที่เกี่ยวแล้วไปกัน ..."
-                            className="w-full px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg border-2 border-blue-200 rounded-full focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                            className="w-full bg-white/50 px-4 sm:px-6 py-3 sm:py-4 text-base sm:text-lg border-2 border-blue-200 rounded-full focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition-all duration-300 transform hover:scale-105 shadow-lg"
                         />
                         <button className="absolute right-4 sm:right-6 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600 transition-colors duration-200 shadow-md">
                             <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

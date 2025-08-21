@@ -3,8 +3,9 @@ function Content({data}) {
     return (
         <>
         {/* Main Content Section */}
+        <div className="backdrop-blur-sm bg-white/50 h-screen">
         <div className="max-w-4xl sm:max-w-5xl lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 border-2 border-red-500">
-                <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300 animate-slide-up border-2 border-blue-500">
+                <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition-all duration-300 animate-slide-up">
                     <div className="flex flex-col md:flex-row relative">
                         {/* Main Image */}
                         <div className="w-full flex flex-col justify-center items-center md:px-7 md:py-7 md:w-3/5 relative overflow-hidden object-cover group">
@@ -19,7 +20,7 @@ function Content({data}) {
                         {/* Content */}
                         <div className="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 flex flex-col justify-between">
                             <div>
-                                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 mb-3 sm:mb-4 leading-tight hover:text-blue-600 transition-colors duration-200">
+                                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 mb-3 sm:mb-4 leading-tight hover:text-blue-600 transition-colors duration-200 cursor-pointer">
                                     {data.title}
                                 </h2>
                                 
@@ -27,7 +28,7 @@ function Content({data}) {
                                     {data.description}
                                 </p>
                                 
-                                <button className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors duration-200 mb-4 sm:mb-6 group underline text-sm sm:text-base">
+                                <button className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition-colors duration-200 mb-4 sm:mb-6 group underline text-sm sm:text-base cursor-pointer">
                                     อ่านต่อ
                                     <svg className="w-3 h-3 sm:w-4 sm:h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -74,6 +75,7 @@ function Content({data}) {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </>
     )

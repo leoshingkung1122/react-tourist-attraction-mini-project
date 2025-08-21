@@ -23,6 +23,15 @@
   }
 }
 
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
 .animate-fade-in {
   animation: fade-in 0.8s ease-out forwards;
 }
@@ -30,6 +39,52 @@
 .animate-slide-up {
   animation: slide-up 0.6s ease-out forwards;
   opacity: 0;
+}
+
+/* Spinning Light Border Effect */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.card-container {
+  position: relative;
+  z-index: 0;
+}
+
+.card-container::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from var(--angle),
+    #3b82f6,  /* blue-500 */
+    #1d4ed8,  /* blue-700 */
+    #1e40af,  /* blue-800 */
+    #1e3a8a,  /* blue-900 */
+    #3b82f6   /* blue-500 */
+  );
+  border-radius: 1rem;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  animation: spin 3s linear infinite;
+  z-index: -1;
+  padding: 3px;
+}
+
+.card-container:hover::after {
+  opacity: 1;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  background: white;
 }
 
 /* Line Clamp Utilities */

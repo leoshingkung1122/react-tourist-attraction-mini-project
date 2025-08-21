@@ -20,7 +20,7 @@ const mockData = {
 
 function Home() {
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen">
             <Header />
             <Content data={mockData}/>
         </div>
