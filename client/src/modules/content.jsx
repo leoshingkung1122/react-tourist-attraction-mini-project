@@ -3,7 +3,8 @@ function Content({data}) {
     return (
         <>
         {/* Main Content Section */}
-        <div className="backdrop-blur-sm bg-white/50 h-full">
+        <main className="min-h-screen w-full">
+        <div className="backdrop-blur-sm bg-white/50 min-h-screen w-full">
         <div className="max-w-3xl sm:max-w-4xl lg:max-w-6xl mx-auto px-3 sm:px-5 lg:px-6 py-6 sm:py-8 flex flex-col items-center justify-center gap-6">
                 {data.map((item,index) => (
                     <div key={item.eid} className="bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden transform hover:scale-[1.01] transition-all duration-300 animate-slide-up">
@@ -80,6 +81,7 @@ function Content({data}) {
                 ))}
             </div>
             </div>
+            </main>
         </>
     )
 }
