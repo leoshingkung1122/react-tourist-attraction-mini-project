@@ -8,21 +8,34 @@ function Home() {
 
     const [search, setSearch] = useState("");
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const fetchData = async () => {
-        const response = await axios.get(`http://localhost:4001/trips?keywords=${search}`);
-        setData(response.data.data);
+        try {
+            const response = await axios.get(`http://localhost:4001/trips?keywords=${search}`);
+            setData(response.data.data);
+        } catch (error) {
+            setError(error);
+        } finally {
+            setLoading(false);
+        }
     }
 
     useEffect(() => {
-        fetchData();
+        setError(false);
+        setLoading(true);
+        const timeoutId = setTimeout(() => {
+            fetchData();
+        }, 500);
+        return () => clearTimeout(timeoutId);
     }, [search]);
 
 
     return (
         <div className="min-h-screen">
             <Header search={search} setSearch={setSearch}/>
-            <Content data={data}/>
+            <Content data={data} Loading={loading} error={error}/>
         </div>
     );
 }

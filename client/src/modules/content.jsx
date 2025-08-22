@@ -1,5 +1,23 @@
+import { useState, useEffect } from 'react';
 
-function Content({data}) {
+function Content({data,Loading,error}) {
+
+    const [showNotification, setShowNotification] = useState(false);
+    const [notificationType, setNotificationType] = useState('');
+
+    useEffect(() => {
+        if (Loading || error) {
+            setNotificationType(Loading ? 'loading' : 'error');
+            setShowNotification(true);
+            
+            // ซ่อน notification หลังจาก 4 วินาที
+            const timer = setTimeout(() => {
+                setShowNotification(false);
+            }, 4000);
+            
+            return () => clearTimeout(timer);
+        }
+    }, [Loading, error]);
 
 
     const handleCopy = async (url) => {
@@ -15,7 +33,37 @@ function Content({data}) {
         <>
         {/* Main Content Section */}
         <main className="min-h-screen w-full">
-        <div className="backdrop-blur-sm bg-white/50 min-h-screen w-full">
+        {showNotification && (
+                <div className="fixed bottom-[10vh] right-0 w-1/5 h-1/8 rounded-2xl shadow-2xl z-10 animate-slide-left">
+                    <div className="flex flex-col items-center justify-center h-full w-full bg-gradient-to-br from-blue-50 to-indigo-100 backdrop-blur-md border border-blue-200/50 rounded-2xl shadow-inner">
+                        {/* Decorative border effect */}
+                        <div className="absolute inset-0 bg-white from-blue-400/20 via-blue-500/20 to-indigo-600/20 rounded-2xl"></div>
+                        
+                        {notificationType === 'loading' && (
+                            <div className="text-center relative z-10">
+                                <div className="animate-spin rounded-full h-10 w-10 border-4 border-blue-200 border-t-blue-600 mx-auto mb-3 shadow-lg"></div>
+                                <p className="text-sm font-bold text-blue-700 drop-shadow-sm">กำลังโหลด...</p>
+                                <div className="mt-2 flex space-x-1 justify-center">
+                                    <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
+                                    <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                                    <div className="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                                </div>
+                            </div>
+                        )}
+                        {notificationType === 'error' && (
+                            <div className="text-center relative z-10">
+                                <div className="w-12 h-12 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center mx-auto mt-3 mb-2 shadow-lg">
+                                    <span className="text-white text-xl font-bold">!</span>
+                                </div>
+                                <p className="text-sm font-bold text-red-700 drop-shadow-sm mb-1">เกิดข้อผิดพลาด</p>
+                                <p className="text-xs text-red-600/80">ไม่สามารถโหลดข้อมูลได้</p>
+                                <div className="mt-2 mb-2w-16 h-1 bg-gradient-to-r from-red-400 to-red-600 rounded-full mx-auto"></div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            )}
+        <div className="backdrop-blur-sm bg-white/50 min-h-screen w-full z-0 relative">
         <div className="max-w-3xl sm:max-w-4xl lg:max-w-6xl mx-auto px-5 sm:px-8 lg:px-18 py-6 sm:py-8 flex flex-col items-center justify-center gap-6 ">
                 {data.map((item,index) => (
                     <div key={item.eid} className="bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden transform hover:scale-[1.01] transition-all duration-300 animate-slide-up w-full">
