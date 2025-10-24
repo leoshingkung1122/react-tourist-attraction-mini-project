@@ -20,11 +20,12 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/client/dist/$1"
+      "dest": "/$1",
+      "check": true
     },
     {
       "src": "/(.*)",
-      "dest": "/client/dist/index.html"
+      "dest": "/index.html"
     }
   ]
 }

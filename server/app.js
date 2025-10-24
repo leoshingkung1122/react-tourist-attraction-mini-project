@@ -9,11 +9,13 @@ const port = 4001;
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
+// Health/root endpoints (support both local '/' and deployed '/api')
+app.get(["/", "/api"], (req, res) => {
   res.send("Hello World!");
 });
 
-app.get("/trips", (req, res) => {
+// API endpoint under '/api' for Vercel rewrite and '/trips' for local dev
+app.get(["/api/trips", "/trips"], (req, res) => {
   let keywords = req.query.keywords;
 
   if (keywords === undefined) {
@@ -37,8 +39,11 @@ app.get("/trips", (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Server is running at port ${port}`);
-});
+// Only start the server locally. On Vercel (serverless) this must be disabled.
+if (!process.env.VERCEL) {
+  app.listen(port, () => {
+    console.log(`Server is running at port ${port}`);
+  });
+}
 
 export default app;
