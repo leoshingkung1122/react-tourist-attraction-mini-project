@@ -19,7 +19,7 @@ app.get("/api/test", (req, res) => {
 });
 
 // API endpoint for trips
-app.get("/trips", (req, res) => {
+app.get("/api/trips", (req, res) => {
   let keywords = req.query.keywords;
 
   if (keywords === undefined) {
