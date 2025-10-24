@@ -1,7 +1,7 @@
-import express from "express";
-import bodyParser from "body-parser";
-import cors from "cors";
-import trips from "./db.js";
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const trips = require("./db.js");
 
 const app = express();
 
@@ -11,6 +11,11 @@ app.use(bodyParser.json());
 // Health check endpoint
 app.get("/", (req, res) => {
   res.send("Server is running!");
+});
+
+// Test endpoint for Vercel
+app.get("/api/test", (req, res) => {
+  res.json({ message: "Hello from Express on Vercel!" });
 });
 
 // API endpoint for trips
@@ -38,4 +43,5 @@ app.get("/trips", (req, res) => {
   });
 });
 
-export default app;
+// ! สำคัญ - ต้อง export app ออก ไม่ใช่ app.listen
+module.exports = app;
