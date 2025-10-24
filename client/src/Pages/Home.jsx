@@ -13,7 +13,7 @@ function Home() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`/api/trips?keywords=${search}`);
+            const response = await axios.get(`https://react-tourist-attraction-mini-proje-tau.vercel.app/api/trips?keywords=${search}`);
             setData(response.data.data);
         } catch (error) {
             setError(error);
